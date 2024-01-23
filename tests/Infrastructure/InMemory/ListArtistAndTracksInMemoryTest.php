@@ -41,11 +41,13 @@ class ListArtistAndTracksInMemoryTest extends TestCase
 
                         'id' => 1,
                         'title' => 'follow',
+                        'artist_id' => 'some_artist_id',
                     ],
                     [
 
                         'id' => 2,
                         'title' => 'the river',
+                        'artist_id' => 'some_artist_id',
                     ],
                 ],
             ]
@@ -65,7 +67,8 @@ class ListArtistAndTracksInMemoryTest extends TestCase
     {
         return new Track(
             id: PositiveInt::fromInt($number),
-            title: FilledString::fromString($title)
+            title: FilledString::fromString($title),
+            artistId: FilledString::fromString("some_artist_id"),
         );
     }
 }

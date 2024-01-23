@@ -23,13 +23,25 @@ final class InMemory
     {
         return new self(
             artists: [
-                new Artist(id: FilledString::fromString("id_1"), name: FilledString::fromString("Arctic") ),
-                new Artist(id: FilledString::fromString("id_2"), name: FilledString::fromString("U2")),
+                new Artist(id: FilledString::fromString("id_artic_1"), name: FilledString::fromString("Arctic") ),
+                new Artist(id: FilledString::fromString("id_u2_2"), name: FilledString::fromString("U2")),
             ],
             tracks: [
-
-                new Track(id: PositiveInt::fromInt(1), title: FilledString::fromString("follow") ),
-                new Track(id: PositiveInt::fromInt(3), title: FilledString::fromString("the river")),
+                new Track(
+                    id: PositiveInt::fromInt(1), 
+                    title: FilledString::fromString("are you mine"),
+                    artistId: FilledString::fromString("id_artic_1")
+                ),
+                new Track(
+                    id: PositiveInt::fromInt(2),
+                    title: FilledString::fromString("bad"),
+                    artistId: FilledString::fromString("id_2")
+                ),
+                new Track(
+                    id: PositiveInt::fromInt(3), 
+                    title: FilledString::fromString("view from the afternoon"),
+                    artistId: FilledString::fromString("id_artic_1")
+                ),
             ]
         );
     }

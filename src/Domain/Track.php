@@ -8,7 +8,9 @@ final class Track
 {
     public function __construct(
         readonly public PositiveInt $id,
+        readonly public FilledString $artistId,
         public FilledString $title,
+        
     ) {
     }
 }

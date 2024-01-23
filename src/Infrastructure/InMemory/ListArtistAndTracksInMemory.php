@@ -20,27 +20,30 @@ final class ListArtistAndTracksInMemory implements ListArtistAndTrackInterface
     {
         return [
             'artists' => array_map(
-                fn (Artist $artist): array => self::formatArtist($artist),
+                fn(Artist $artist): array => self::formatArtist($artist),
                 $this->inMemory->getArtists()
             ),
             'tracks' => array_map(
-                fn (Track $track): array => self::formatTrack($track),
+                fn(Track $track): array => self::formatTrack($track),
                 $this->inMemory->getTracks()
             ),
         ];
     }
 
-    private static function formatTrack(Track $track): array {
+    private static function formatTrack(Track $track): array
+    {
         return [
-            "id"=> $track->id->value,
-            "title"=> $track->title->value,
+            "id" => $track->id->value,
+            "title" => $track->title->value,
+            'artist_id' => $track->artistId->value,
         ];
     }
 
-    private static function formatArtist(Artist $artist): array {
+    private static function formatArtist(Artist $artist): array
+    {
         return [
-            "id"=> $artist->id->value,
-            "name"=> $artist->name->value,
+            "id" => $artist->id->value,
+            "name" => $artist->name->value,
         ];
     }
 }
