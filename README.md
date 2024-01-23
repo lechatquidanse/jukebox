@@ -8,6 +8,12 @@ Please follow the [official documentation](docker-compose-install) to install it
 
 ### Install
 
+
+```bash
+git clone git@github.com:lechatquidanse/jukebox.git
+```
+then 
+
 ```bash
 make install
 ```
