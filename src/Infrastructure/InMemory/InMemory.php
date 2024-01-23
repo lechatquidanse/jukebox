@@ -65,4 +65,14 @@ final class InMemory
     {
         return $this->artists;
     }
+
+    public function getTrack(PositiveInt $number): Track|null
+    {
+        foreach ($this->tracks as $track) {
+            if ($track->id == $number) {
+                return $track;
+            }
+        }
+        return null;
+    }
 }
