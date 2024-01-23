@@ -7,17 +7,22 @@ namespace App\Infrastructure\InMemory;
 use App\Domain\Artist;
 use App\Domain\FilledString;
 use App\Domain\PositiveInt;
+use App\Domain\Queue;
 use App\Domain\Track;
 
 final class InMemory
 {
-    private function __construct(private array $artists, private array $tracks)
+    private function __construct(
+        private array $artists, 
+        private array $tracks,
+        private Queue $queue,
+    )
     {
     }
 
     public static function empty(): InMemory
     {
-        return new self([], []);
+        return new self([], [], Queue::empty());
     }
     public static function filled(): InMemory
     {
@@ -42,7 +47,8 @@ final class InMemory
                     title: FilledString::fromString("view from the afternoon"),
                     artistId: FilledString::fromString("id_artic_1")
                 ),
-            ]
+            ],
+            queue: Queue::empty(),
         );
     }
 
@@ -64,6 +70,14 @@ final class InMemory
     public function getArtists(): array
     {
         return $this->artists;
+    }
+    public function getQueue(): Queue
+    {
+        return $this->queue;
+    }
+    public function setQueue(Queue $queue): void
+    {
+        $this->queue = $queue;
     }
 
     public function getTrack(PositiveInt $number): Track|null

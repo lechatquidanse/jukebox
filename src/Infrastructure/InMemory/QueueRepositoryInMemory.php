@@ -10,25 +10,22 @@ use App\Domain\QueueRepositoryInterface;
 
 final class QueueRepositoryInMemory implements QueueRepositoryInterface
 {
-    private Queue $queue;
-
-    public function __construct(
-    ) {
-        $this->queue = Queue::empty();
+    public function __construct(private readonly InMemory $inMemory)
+    {
     }
 
     public function find(): Queue
     {
-        return $this->queue;
+        return $this->inMemory->getQueue();
     }
 
     public function save(Queue $queue): void
     {
-        $this->queue = $queue;
+        $this->inMemory->setQueue($queue);
     }
 
     public function isEmpty(): bool
     {
-        return empty($this->queue->tracks());
+        return empty($this->find()->tracks());
     }
 }

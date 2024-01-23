@@ -12,8 +12,24 @@ Please follow the [official documentation](docker-compose-install) to install it
 make install
 ```
 
-### List
+### Features
+#### List
 
 ```bash
 make list
+```
+#### Play
+
+```bash
+make play
+```
+or 
+
+```bash
+make play TRACK_NUMBERS="1 2"
+```
+#### Queue
+
+```bash
+make queue
 ```

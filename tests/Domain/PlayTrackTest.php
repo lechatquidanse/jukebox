@@ -23,7 +23,7 @@ class PlayTrackTest extends TestCase
         $inMemory = InMemory::filled();
         $inMemory->addTrack($track);
         
-        $queueRepository = new QueueRepositoryInMemory();
+        $queueRepository = new QueueRepositoryInMemory($inMemory);
 
         $playTrack = new PlayTrack(
             findTrack: new FindTrackInMemory($inMemory),
@@ -42,7 +42,7 @@ class PlayTrackTest extends TestCase
 
         $playTrack = new PlayTrack(
             findTrack: new FindTrackInMemory($inMemory),
-            queueRepository: new QueueRepositoryInMemory()
+            queueRepository: new QueueRepositoryInMemory($inMemory)
         );
         $playTrack(PositiveInt::fromInt(99));
     }
