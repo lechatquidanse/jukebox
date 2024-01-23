@@ -5,7 +5,7 @@ TRACK_NUMBERS := 1 2 3
 clear:
 	docker-compose down --remove-orphans
 install:
-	docker-compose run composer
+	docker-compose build && docker-compose run composer
 list:
 	docker-compose run php bin/console list
 play:

@@ -33,3 +33,7 @@ make play TRACK_NUMBERS="1 2"
 ```bash
 make queue
 ```
+
+### Next steps
+
+- Add doctrine ORM to persist in MySQL rather than in Memory
