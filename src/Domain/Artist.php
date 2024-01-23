@@ -7,8 +7,8 @@ namespace App\Domain;
 final class Artist
 {
     public function __construct(
-        readonly private FilledString $id,
-        private FilledString $name,
+        readonly public FilledString $id,
+        public FilledString $name,
     ) {
     }
 }

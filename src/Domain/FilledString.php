@@ -9,7 +9,7 @@ use InvalidArgumentException;
 final class FilledString
 {
     private function __construct(
-        readonly private string $value
+        readonly public string $value
     ) {
     }
 

@@ -1,13 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Infrastructure\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use App\Domain\ListArtistAndTrackInterface;
 
 class ListArtistsAndTracksCommand extends Command
 {
+    public function __construct(readonly public ListArtistAndTrackInterface $list)
+    {
+        parent::__construct();
+    }
+
     protected function configure(): void
     {
         $this
@@ -17,7 +23,12 @@ class ListArtistsAndTracksCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln('List of all tracks');
+        $results = ($this->list)();
+        
+        $output->writeln('List of all tracks:');
+        $output->writeln(json_encode($results));
+        
+
         return 0;
     }
 }

@@ -1,14 +1,21 @@
 #!/usr/bin/env php
 <?php
 
-require dirname(__DIR__).'/vendor/autoload.php';
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 
-use App\ListArtistsAndTracksCommand;
+
+use App\Infrastructure\InMemory\InMemory;
+use App\Infrastructure\Command\ListArtistsAndTracksCommand;
+use App\Infrastructure\InMemory\ListArtistAndTracksInMemory;
 
 $application = new Application();
 
-$application->add(new ListArtistsAndTracksCommand());
+$application->add(
+    new ListArtistsAndTracksCommand(
+        new ListArtistAndTracksInMemory(InMemory::filled())
+    )
+);
 
 $application->run();

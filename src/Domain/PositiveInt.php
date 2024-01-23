@@ -9,7 +9,7 @@ use InvalidArgumentException;
 final class PositiveInt
 {
     private function __construct(
-        readonly private int $value
+        readonly public int $value
     ) {
     }
 
