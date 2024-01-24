@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain;
 
-interface ListArtistAndTrackInterface {
+interface ListArtistAndTrackInterface
+{
     public function __invoke(): array;
 }

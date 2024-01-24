@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 use App\Domain\Queue;
 use App\Domain\Track;
-use App\Domain\PositiveInt;
-use App\Domain\FilledString;
 
 use PHPUnit\Framework\TestCase;
 use function PHPUnit\Framework\assertEquals;
@@ -55,10 +53,6 @@ class QueueTest extends TestCase
 
     private function givenTrack(int $number, string $artistId): Track
     {
-        return new Track(
-            id: PositiveInt::fromInt($number),
-            title: FilledString::fromString("some generic title"),
-            artistId: FilledString::fromString($artistId),
-        );
+        return new Track(id: $number, title: "some generic title", artistId: $artistId, );
     }
 }

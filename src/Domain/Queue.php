@@ -18,7 +18,7 @@ final class Queue
 
     public function addTrack(Track $track): void
     {
-        $lastTrackPositionWithArtist = $this->findLastTrackPositionWithArtist($track->artistId->value);
+        $lastTrackPositionWithArtist = $this->findLastTrackPositionWithArtist($track->artistId);
         $this->insertTrackIn($lastTrackPositionWithArtist, $track);
     }
 
@@ -33,7 +33,7 @@ final class Queue
             $this->tracks[] = $track;
             return;
         }
-        
+
         $this->tracks = array_merge(
             array_slice($this->tracks, 0, $index + 1),
             [$track],
@@ -46,7 +46,7 @@ final class Queue
         $lastIndex = -1;
 
         foreach ($this->tracks as $index => $track) {
-            if ($track->artistId->value === $artistId) {
+            if ($track->artistId === $artistId) {
                 $lastIndex = $index;
             }
         }

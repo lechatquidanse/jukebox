@@ -7,10 +7,9 @@ namespace App\Domain;
 final class Track
 {
     public function __construct(
-        readonly public PositiveInt $id,
-        readonly public FilledString $artistId,
-        public FilledString $title,
-        
+        readonly public int $id,
+        readonly public string $artistId,
+        public string $title,
     ) {
     }
 }

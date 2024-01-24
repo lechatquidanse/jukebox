@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Domain\FilledString;
 
 use App\Domain\PlayTrack;
-use App\Domain\PositiveInt;
 use App\Domain\Track;
 use App\Infrastructure\InMemory\FindTrackInMemory;
 use App\Infrastructure\InMemory\InMemory;
@@ -17,12 +15,12 @@ class PlayTrackTest extends TestCase
 {
     public function testCanPlayMultipleTrack(): void
     {
-        $trackId = PositiveInt::fromInt(99);
-        $track = new Track(id: $trackId, title: FilledString::fromString("99 problems"), artistId: FilledString::fromString("jay-z"));
-        
+        $trackId = 99;
+        $track = new Track(id: $trackId, title: "99 problems", artistId: "jay-z");
+
         $inMemory = InMemory::filled();
         $inMemory->addTrack($track);
-        
+
         $queueRepository = new QueueRepositoryInMemory($inMemory);
 
         $playTrack = new PlayTrack(
@@ -44,6 +42,6 @@ class PlayTrackTest extends TestCase
             findTrack: new FindTrackInMemory($inMemory),
             queueRepository: new QueueRepositoryInMemory($inMemory)
         );
-        $playTrack(PositiveInt::fromInt(99));
+        $playTrack(99);
     }
 }

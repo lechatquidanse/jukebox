@@ -1,0 +1,4 @@
+tools:
+  php-cs-fixer:
+    enabled: true
+    config: .php_cs

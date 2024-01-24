@@ -1,42 +1,21 @@
 #!/usr/bin/env php
 <?php
-use App\Domain\PlayTrack;
+use App\Infrastructure\Command\PopulateJukeboxCommand;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
+require dirname(__DIR__) . '/bootstrap.php';
 
 use Symfony\Component\Console\Application;
 
 
-use App\Infrastructure\InMemory\InMemory;
 use App\Infrastructure\Command\ListArtistsAndTracksCommand;
 use App\Infrastructure\Command\PlayTrackCommand;
 use App\Infrastructure\Command\FindQueueCommand;
-use App\Infrastructure\Command\FindPlayingTrackCommand;
-use App\Infrastructure\InMemory\ListArtistAndTracksInMemory;
-use App\Infrastructure\InMemory\FindTrackInMemory;
-use App\Infrastructure\InMemory\QueueRepositoryInMemory;
+
 
 $application = new Application();
-$inMemory = InMemory::filled();
-$queueRepository = new QueueRepositoryInMemory($inMemory);
-
-$application->add(
-    new ListArtistsAndTracksCommand(
-        new ListArtistAndTracksInMemory($inMemory)
-    )
-);
-
-$application->add(
-    new PlayTrackCommand(
-        new PlayTrack(
-            findTrack: new FindTrackInMemory($inMemory),
-            queueRepository: $queueRepository,
-        )
-    )
-);
-$application->add(
-    new FindQueueCommand(
-        $queueRepository
-    )
-);
+$application->add(new ListArtistsAndTracksCommand($listArtistAndTracks));
+$application->add(new PlayTrackCommand($playTrack));
+$application->add(new FindQueueCommand($queueRepository));
+$application->add(new PopulateJukeboxCommand($entityManager));
 $application->run();

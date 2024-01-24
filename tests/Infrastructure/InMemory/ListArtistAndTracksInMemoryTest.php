@@ -65,10 +65,6 @@ class ListArtistAndTracksInMemoryTest extends TestCase
 
     private function givenTrack(int $number, string $title): Track
     {
-        return new Track(
-            id: PositiveInt::fromInt($number),
-            title: FilledString::fromString($title),
-            artistId: FilledString::fromString("some_artist_id"),
-        );
+        return new Track(id: $number, title: $title, artistId: "some_artist_id");
     }
 }

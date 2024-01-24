@@ -17,8 +17,17 @@ then
 ```bash
 make install
 ```
+then after few seconds (waiting for db to be ready)
+```bash
+make migrate-database
+```
 
 ### Features
+#### Populate jukebox
+
+```bash
+make populate-jukebox
+```
 #### List
 
 ```bash

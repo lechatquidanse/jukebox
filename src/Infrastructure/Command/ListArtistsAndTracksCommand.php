@@ -24,10 +24,10 @@ class ListArtistsAndTracksCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $results = ($this->list)();
-        
+
         $output->writeln('List of all tracks:');
         $output->writeln(json_encode($results));
-        
+
 
         return 0;
     }

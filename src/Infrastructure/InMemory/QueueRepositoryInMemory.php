@@ -7,7 +7,6 @@ namespace App\Infrastructure\InMemory;
 use App\Domain\Queue;
 use App\Domain\QueueRepositoryInterface;
 
-
 final class QueueRepositoryInMemory implements QueueRepositoryInterface
 {
     public function __construct(private readonly InMemory $inMemory)

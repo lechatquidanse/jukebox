@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain;
 
-interface QueueRepositoryInterface {
+interface QueueRepositoryInterface
+{
     public function find(): Queue;
     public function save(Queue $queue): void;
 }

@@ -6,18 +6,16 @@ namespace App\Infrastructure\InMemory;
 
 use App\Domain\Artist;
 use App\Domain\FilledString;
-use App\Domain\PositiveInt;
 use App\Domain\Queue;
 use App\Domain\Track;
 
 final class InMemory
 {
     private function __construct(
-        private array $artists, 
+        private array $artists,
         private array $tracks,
         private Queue $queue,
-    )
-    {
+    ) {
     }
 
     public static function empty(): InMemory
@@ -28,25 +26,13 @@ final class InMemory
     {
         return new self(
             artists: [
-                new Artist(id: FilledString::fromString("id_artic_1"), name: FilledString::fromString("Arctic") ),
+                new Artist(id: FilledString::fromString("id_artic_1"), name: FilledString::fromString("Arctic")),
                 new Artist(id: FilledString::fromString("id_u2_2"), name: FilledString::fromString("U2")),
             ],
             tracks: [
-                new Track(
-                    id: PositiveInt::fromInt(1), 
-                    title: FilledString::fromString("are you mine"),
-                    artistId: FilledString::fromString("id_artic_1")
-                ),
-                new Track(
-                    id: PositiveInt::fromInt(2),
-                    title: FilledString::fromString("bad"),
-                    artistId: FilledString::fromString("id_2")
-                ),
-                new Track(
-                    id: PositiveInt::fromInt(3), 
-                    title: FilledString::fromString("view from the afternoon"),
-                    artistId: FilledString::fromString("id_artic_1")
-                ),
+                new Track(id: 1, title: "are you mine", artistId: "id_artic_1"),
+                new Track(id: 2, title: "bad", artistId: "id_2"),
+                new Track(id: 3, title: "view from the afternoon", artistId: "id_artic_1"),
             ],
             queue: Queue::empty(),
         );
@@ -80,7 +66,7 @@ final class InMemory
         $this->queue = $queue;
     }
 
-    public function getTrack(PositiveInt $number): Track|null
+    public function getTrack(int $number): Track|null
     {
         foreach ($this->tracks as $track) {
             if ($track->id == $number) {

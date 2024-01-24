@@ -9,7 +9,6 @@ use App\Domain\Track;
 use App\Domain\Artist;
 use App\Infrastructure\InMemory\InMemory;
 
-
 final class ListArtistAndTracksInMemory implements ListArtistAndTrackInterface
 {
     public function __construct(private readonly InMemory $inMemory)
@@ -20,11 +19,11 @@ final class ListArtistAndTracksInMemory implements ListArtistAndTrackInterface
     {
         return [
             'artists' => array_map(
-                fn(Artist $artist): array => self::formatArtist($artist),
+                fn (Artist $artist): array => self::formatArtist($artist),
                 $this->inMemory->getArtists()
             ),
             'tracks' => array_map(
-                fn(Track $track): array => self::formatTrack($track),
+                fn (Track $track): array => self::formatTrack($track),
                 $this->inMemory->getTracks()
             ),
         ];
@@ -33,9 +32,9 @@ final class ListArtistAndTracksInMemory implements ListArtistAndTrackInterface
     private static function formatTrack(Track $track): array
     {
         return [
-            "id" => $track->id->value,
-            "title" => $track->title->value,
-            'artist_id' => $track->artistId->value,
+            "id" => $track->id,
+            "title" => $track->title,
+            'artist_id' => $track->artistId,
         ];
     }
 
