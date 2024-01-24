@@ -18,7 +18,7 @@ final class PlayTrack
     {
         $queue = $this->queueRepository->find();
         foreach ($numbers as $number) {
-            $queue = $this->playTrack($number, $queue);
+            $this->playTrack($number, $queue);
         }
 
         $this->queueRepository->save($queue);

@@ -30,9 +30,9 @@ class FindQueueCommand extends Command
 
         foreach ($queue->tracks() as $key => $track) {
             if ($key == 0) {
-                $output->writeln("Playing track ${$track->title}");
+                $output->writeln("PLAYING track number with {$track->id} and title '{$track->title}'");
             } else {
-                $output->writeln("Queuing track ${$track->title}");
+                $output->writeln("QUEUE track number with {$track->id} and title '{$track->title}'");
             }
         }
 

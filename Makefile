@@ -1,11 +1,11 @@
 .PHONY: vendor
-TRACK_NUMBERS := 101 102 103
+TRACK_NUMBERS := 101 103 102 104
 
 
 ######################################################
 ###  Init ::
 ######################################################
-clear:
+remove:
 	docker-compose down --remove-orphans
 install:
 	docker-compose build && docker-compose run --rm composer && docker-compose up -d
@@ -23,6 +23,8 @@ play:
 	docker-compose run --rm php bin/console play $(TRACK_NUMBERS)
 queue:
 	docker-compose run --rm php bin/console queue
+clear:
+	docker-compose run --rm php bin/console clear
 
 ######################################################
 ###  Dev ::

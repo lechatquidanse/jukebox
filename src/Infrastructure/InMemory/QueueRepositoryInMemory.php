@@ -27,4 +27,9 @@ final class QueueRepositoryInMemory implements QueueRepositoryInterface
     {
         return empty($this->find()->tracks());
     }
+
+    public function clear(): void
+    {
+        $this->inMemory->setQueue(Queue::empty());
+    }
 }

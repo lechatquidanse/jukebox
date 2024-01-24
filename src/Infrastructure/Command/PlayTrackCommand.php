@@ -28,11 +28,7 @@ class PlayTrackCommand extends Command
     {
         $numbers = $input->getArgument('numbers');
 
-        foreach ($numbers as $number) {
-            $output->writeln("Track $number");
-
-            ($this->playTrack)($number);
-        }
+        ($this->playTrack)(...$numbers);
 
         return 0;
     }

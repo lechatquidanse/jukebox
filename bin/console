@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+use App\Infrastructure\Command\ClearQueueCommand;
 use App\Infrastructure\Command\PopulateJukeboxCommand;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
@@ -18,4 +19,5 @@ $application->add(new ListArtistsAndTracksCommand($listArtistAndTracks));
 $application->add(new PlayTrackCommand($playTrack));
 $application->add(new FindQueueCommand($queueRepository));
 $application->add(new PopulateJukeboxCommand($entityManager));
+$application->add(new ClearQueueCommand($queueRepository));
 $application->run();

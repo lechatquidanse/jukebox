@@ -8,4 +8,5 @@ interface QueueRepositoryInterface
 {
     public function find(): Queue;
     public function save(Queue $queue): void;
+    public function clear(): void;
 }

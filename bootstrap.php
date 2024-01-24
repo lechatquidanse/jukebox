@@ -9,6 +9,7 @@ use App\Infrastructure\InMemory\FindTrackInMemory;
 use App\Infrastructure\InMemory\ListArtistAndTracksInMemory;
 use App\Infrastructure\InMemory\InMemory;
 use App\Infrastructure\InMemory\QueueRepositoryInMemory;
+use App\Infrastructure\Json\QueueRepositoryJson;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
@@ -28,7 +29,7 @@ $connection = DriverManager::getConnection([
 
 $entityManager = new EntityManager($connection, $config);
 $inMemory = InMemory::filled();
-$queueRepository = new QueueRepositoryInMemory($inMemory);
+$queueRepository = new QueueRepositoryJson();
 $listArtistAndTracks = new ListArtistAndTracksDoctrine($entityManager);
 $playTrack = new PlayTrack(
     findTrack: new FindTrackDoctrine($entityManager),
